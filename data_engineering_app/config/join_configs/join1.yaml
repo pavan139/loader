@@ -1,0 +1,22 @@
+join_config:
+  join_parameters:
+    join_key: "join_key"         # This must match the standardized column name from audit config.
+    how: "inner"
+  filters:
+    conditions:
+      - "status_left == 'active'"   # Use the actual column name with suffix
+      - "age_right >= 21"            # Filter condition for right DataFrame.
+    regex_filters: {}
+    null_filters: []
+    duplicate_filters: []
+    date_filters: {}
+  sorting:
+    column: "date_column"         # Sort on the standardized date column.
+    ascending: true
+  audits:
+    - row_count
+    - column_count
+    - duplicate_count
+  output:
+    save_to_file: false           # Change to true to save the joined DataFrame.
+    file_path: "data/joined_output.csv"

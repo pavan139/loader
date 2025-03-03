@@ -1,0 +1,5 @@
+Acc Number,Age,Salary,ID,Transaction Date,status
+00001,25,50000,101,2022-05-10,active
+00002,30,60000,102,2021-12-15,inactive
+00003,22,45000,103,2023-01-05,active
+00004,45,80000,104,2022-08-20,active

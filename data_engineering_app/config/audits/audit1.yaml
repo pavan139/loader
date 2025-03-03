@@ -1,0 +1,64 @@
+audit_config:
+  error_mode: "strict"           # "strict" raises errors on validation failures.
+  label: "Data Audit"
+  columns:
+    account_number:
+      column_name_csv: "Acc Number"
+      type: "str"
+      null_allowed: false
+      duplicate_allowed: false
+      regex: "^[0-9]{5,}$"
+      required: true
+    age:
+      column_name_csv: "Age"
+      type: "int"
+      null_allowed: false
+      duplicate_allowed: true
+      required: true
+    salary:
+      column_name_csv: "Salary"
+      type: "float"
+      null_allowed: false
+      duplicate_allowed: true
+      required: true
+    join_key:
+      column_name_csv: "ID"
+      type: "str"
+      null_allowed: false
+      duplicate_allowed: false
+      required: true
+    date_column:
+      column_name_csv: "Transaction Date"
+      type: "date"
+      format: "%Y-%m-%d"
+      null_allowed: false
+      duplicate_allowed: true
+      required: true
+    status:
+      column_name_csv: "status"
+      type: "str"
+      null_allowed: false
+      duplicate_allowed: true
+      required: true
+      
+  audits:
+    - row_count
+    - column_count
+    - null_counts
+    - duplicate_count
+    - data_types
+    - summary_stats
+    - unique_counts
+  quality_checks:
+    numeric_range_checks:
+      age:
+        min: 0
+        max: 120
+      salary:
+        min: 30000
+        max: 500000
+    allowed_values:
+      status:
+        - "active"
+        - "inactive"
+  regex_validations: {}

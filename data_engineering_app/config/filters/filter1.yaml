@@ -1,0 +1,15 @@
+filter_config:
+  conditions:
+    - "status == 'active'"        # Only keep rows with active status.
+    - "age >= 21"                 # Only keep rows where age is at least 21.
+  regex_filters:
+    account_number: "^[0-9]{5,}$"   # Validate account numbers.
+  null_filters:
+    - account_number              # Drop rows with null in account_number.
+    - age
+  duplicate_filters:
+    - account_number              # Remove duplicate account numbers.
+  date_filters:
+    date_column:
+      min: "2020-01-01"
+      max: "2025-01-01"
